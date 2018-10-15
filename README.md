@@ -19,7 +19,7 @@ Alternatively, you can clone this repo.
 Select the code you wish to refactor in visual mode. You can then use the following commands:
 
 ```vim
-:ExtractHaskellFunction <name> <args>
+:ExtractHaskellFunction <name> <params>
 :ExtractHaskellType <name>
 ```
 
