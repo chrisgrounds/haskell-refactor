@@ -45,11 +45,11 @@ function! CreateFunction(name, params)
 endfunction
 
 function! ExtractHaskellFunction(...)
-    let args = a:0 > 0 ? split(a:000[0], " ") : []
-    let numArgs = len(args)
-    let fName = numArgs > 0 ? args[0] : "f"
+    let args       = a:0 > 0 ? split(a:000[0], " ") : []
+    let numArgs    = len(args)
+    let fName      = numArgs > 0 ? args[0] : "f"
     let numFParams = numArgs - 1
-    let fParams = args != [] ? join(args[1:], " ") : ""
+    let fParams    = args != [] ? join(args[1:], " ") : ""
 
     let cmd = "normal! gvdmm" 
     let cmd .= FindNextEmptyLine() 
@@ -66,3 +66,4 @@ endfunction
 
 command! -range -nargs=? ExtractHaskellType     call ExtractHaskellType(<f-args>)
 command! -range -nargs=? ExtractHaskellFunction call ExtractHaskellFunction(<f-args>)
+
