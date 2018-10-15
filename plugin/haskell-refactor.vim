@@ -14,7 +14,16 @@ endfunction
 
 function! ExtractHaskellType(...)
     let newTypeName = exists('a:1') ? a:1 : "MyType"
-    execute "normal! gvdmm" . FindPreviousEmptyLine() . "o" . CreateType(newTypeName) . "\<esc>po\<esc>`mi\<space>" . newTypeName . "\<esc>:noh"
+
+    let cmd = "normal! gvdmm" 
+    let cmd .= FindPreviousEmptyLine() 
+    let cmd .= "o" 
+    let cmd .= CreateType(newTypeName) 
+    let cmd .= "\<esc>po\<esc>`mi\<space>" 
+    let cmd .= newTypeName 
+    let cmd .= "\<esc>:noh"
+
+    execute cmd
 endfunction
 
 function! CreateTypeSignature(name, numArgs)
