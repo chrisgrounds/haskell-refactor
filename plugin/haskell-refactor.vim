@@ -1,4 +1,3 @@
-
 let g:equals = "\<space>=\<space>"
 
 function! FindNextEmptyLine()
