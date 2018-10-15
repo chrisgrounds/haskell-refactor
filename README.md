@@ -1,4 +1,4 @@
-# haskell-refactor
+# Haskell Refactor
 
 A vim plugin that helps you refactor Haskell code.
 
