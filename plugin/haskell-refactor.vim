@@ -13,14 +13,22 @@ function! CreateType(name)
 endfunction
 
 function! ExtractHaskellType(...)
-    let newTypeName = exists('a:1') ? a:1 : "MyType"
+    let requiresPrompt = a:0 < 1
+
+    if requiresPrompt
+        call inputsave()
+        let tName = input('Name type constructor: ')
+        call inputrestore()
+    else 
+        let tName = a:1
+    endif
 
     let cmd = "normal! gvdmm" 
     let cmd .= FindPreviousEmptyLine() 
     let cmd .= "o" 
-    let cmd .= CreateType(newTypeName) 
+    let cmd .= CreateType(tName) 
     let cmd .= "\<esc>po\<esc>`mi\<space>" 
-    let cmd .= newTypeName 
+    let cmd .= tName 
     let cmd .= "\<esc>:noh"
 
     execute cmd
@@ -38,18 +46,32 @@ function! CreateTypeSignature(name, numArgs)
 endfunction
 
 function! CreateFunction(name, params)
-    if a:params != ""
-        return a:name . " " . a:params . g:equals
-    endif
-    return a:name . g:equals
+    return a:name . " " . a:params . g:equals
 endfunction
 
 function! ExtractHaskellFunction(...)
-    let args       = a:0 > 0 ? split(a:000[0], " ") : []
-    let numArgs    = len(args)
-    let fName      = numArgs > 0 ? args[0] : "f"
-    let numFParams = numArgs - 1
-    let fParams    = args != [] ? join(args[1:], " ") : ""
+    let requiresPrompt = a:0 < 1
+
+    if requiresPrompt
+        call inputsave()
+        let fName = input('Rename function to: ')
+        call inputrestore()
+
+        call inputsave()
+        let providedArgs = input('Give arguments (seperated by space):  ')
+        call inputrestore()
+
+        let args       = split(providedArgs, " ")
+        let numArgs    = len(args)
+        let numFParams = numArgs
+        let fParams    = args != [] ? join(args, " ") : ""
+    else
+        let args       = a:0 > 0 ? split(a:000[0], " ") : []
+        let numArgs    = len(args)
+        let fName      = numArgs > 0 ? args[0] : "f"
+        let numFParams = numArgs - 1
+        let fParams    = args != [] ? join(args[1:], " ") : ""
+    endif
 
     let cmd = "normal! gvdmm" 
     let cmd .= FindNextEmptyLine() 

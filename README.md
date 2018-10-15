@@ -23,7 +23,7 @@ Select the code you wish to refactor in visual mode. You can then use the follow
 :ExtractHaskellType <name>
 ```
 
-Every command has some sensible defaults, so you do not need to provide any arguments. This also means you can use the motions:
+All options are optional. Every command will default to a prompt if no args are provided, so you do not need to provide any arguments. This also means you can use the motions:
 
 ```
 <leader>ef - calls ExtractHaskellFunction
