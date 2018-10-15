@@ -41,7 +41,18 @@ function! ExtractHaskellFunction(...)
     let fName = numArgs > 0 ? args[0] : "f"
     let numFParams = numArgs - 1
     let fParams = args != [] ? join(args[1:], " ") : ""
-    execute "normal! gvdmm" . FindNextEmptyLine() . "o" . CreateTypeSignature(fName, numFParams) . "\<esc>o" . CreateFunction(fName, fParams) . "\<esc>po\<esc>`mi" . fName . (fParams != "" ? " " . fParams : "") . "\<esc>:noh"
+
+    let cmd = "normal! gvdmm" 
+    let cmd .= FindNextEmptyLine() 
+    let cmd .= "o" 
+    let cmd .= CreateTypeSignature(fName, numFParams) 
+    let cmd .= "\<esc>o" 
+    let cmd .= CreateFunction(fName, fParams) 
+    let cmd .= "\<esc>po\<esc>`mi" 
+    let cmd .= fName . (fParams != "" ? " " . fParams : "") 
+    let cmd .= "\<esc>:noh"
+
+    execute cmd
 endfunction
 
 command! -range -nargs=? ExtractHaskellType     call ExtractHaskellType(<f-args>)
