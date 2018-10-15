@@ -29,3 +29,7 @@ Every command has some sensible defaults, so you do not need to provide any argu
 <leader>ef - calls ExtractHaskellFunction
 <leader>et - calls ExtractHaskellType
 ```
+
+## Contributing
+
+_Please feel free to raise any issues or PRs._
