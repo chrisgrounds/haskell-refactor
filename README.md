@@ -31,11 +31,11 @@ All options are optional. Every command will default to a prompt if no args are 
 
 ### Mappings
 
-When selected something in visual mode, these mappings are available.
+You following are examples of mappings you could create for each command:
 
 ```vim
-<leader>ef " calls ExtractHaskellFunction
-<leader>et " calls ExtractHaskellType
+vnoremap <leader>ef :ExtractHaskellFunction<cr>
+vnoremap <leader>et :ExtractHaskellType<cr>
 ```
 
 ## Contributing
