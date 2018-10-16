@@ -31,6 +31,8 @@ All options are optional. Every command will default to a prompt if no args are 
 
 ### Mappings
 
+When selected something in visual mode, these mappings are available.
+
 ```vim
 <leader>ef " calls ExtractHaskellFunction
 <leader>et " calls ExtractHaskellType
