@@ -2,6 +2,8 @@
 
 A vim plugin that helps you refactor Haskell code.
 
+![Demo](https://github.com/chris-bacon/haskell-refactor/raw/master/demo.gif "Demo")
+
 ## Installation
 
 With `Plug` add,
