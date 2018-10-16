@@ -89,3 +89,6 @@ endfunction
 command! -range -nargs=? ExtractHaskellType     call ExtractHaskellType(<f-args>)
 command! -range -nargs=? ExtractHaskellFunction call ExtractHaskellFunction(<f-args>)
 
+vnoremap <leader>ef :ExtractHaskellFunction<cr>
+vnoremap <leader>et :ExtractHaskellType<cr>
+
