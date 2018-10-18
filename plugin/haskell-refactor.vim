@@ -9,7 +9,7 @@ function! FindPreviousEmptyLine()
 endfunction
 
 function! CreateType(name)
-    return "data\<space>" . a:name . g:equals
+    return "type\<space>" . a:name . g:equals
 endfunction
 
 function! ExtractHaskellType(...)
@@ -17,7 +17,7 @@ function! ExtractHaskellType(...)
 
     if requiresPrompt
         call inputsave()
-        let tName = input('Name type constructor: ')
+        let tName = input('Name type: ')
         call inputrestore()
     else 
         let tName = a:1
