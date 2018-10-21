@@ -1,0 +1,16 @@
+Given haskell (Setup):
+  f = if n > 3 then 3 else n
+
+Do (Highlight text and run ExtractHaskellFuncton):
+  o\<esc>k
+  03w
+  vwe
+  :ExtractHaskellFunction g n\<Enter>
+
+Expect haskell (ExtractHaskellFunction extracts a function correctly):
+  f = if g n then 3 else n
+
+  g :: _ -> _
+  g n = n > 3
+  
+
