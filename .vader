@@ -1,4 +1,4 @@
-Given haskell (Setup):
+Given haskell (Setup with function example):
   f = if n > 3 then 3 else n
 
 Do (Highlight text and run ExtractHaskellFuncton):
@@ -14,3 +14,17 @@ Expect haskell (ExtractHaskellFunction extracts a function correctly):
   g n = n > 3
   
 
+Given haskell (Setup with type example):
+  f :: Int -> Maybe Int -> Int
+
+Do (Highlight text and run ExtractHaskellType):
+  O\<esc>j
+  02w
+  v3we
+  :ExtractHaskellType IntMaybeInt\<Enter>
+
+Expect haskell (ExtractHaskellType extracts a function correctly):
+  type IntMaybeInt = Int -> Maybe Int
+
+  f :: IntMaybeInt -> Int
+  
