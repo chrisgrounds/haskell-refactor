@@ -27,7 +27,7 @@ function! ExtractHaskellType(...)
     let cmd .= FindPreviousEmptyLine() 
     let cmd .= "o" 
     let cmd .= CreateType(tName) 
-    let cmd .= "\<esc>po\<esc>`mi\<space>" 
+    let cmd .= "\<esc>po\<esc>`mi" 
     let cmd .= tName 
     let cmd .= "\<esc>:noh"
 

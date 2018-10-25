@@ -24,7 +24,7 @@ Do (Highlight text and run ExtractHaskellType):
   :ExtractHaskellType IntMaybeInt\<Enter>
 
 Expect haskell (ExtractHaskellType extracts a function correctly):
+
   type IntMaybeInt = Int -> Maybe Int
 
   f :: IntMaybeInt -> Int
-  
