@@ -22,14 +22,14 @@ endfunction
 function! ExtractHaskellType(...)
     let requiresPrompt = a:0 < 1
 
-    let tName = requiresPrompt ? GetInput('Name type: ') : a:1
+    let name = requiresPrompt ? GetInput('Name type: ') : a:1
 
     let cmd = "normal! gvdmm" 
     let cmd .= FindPreviousEmptyLine() 
     let cmd .= "o" 
-    let cmd .= CreateType(tName) 
+    let cmd .= CreateType(name)
     let cmd .= "\<esc>po\<esc>`mi" 
-    let cmd .= tName 
+    let cmd .= name 
     let cmd .= "\<esc>:noh"
 
     execute cmd
