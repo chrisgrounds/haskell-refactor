@@ -49,3 +49,6 @@ There are some tests to ensure regressions are not added.
 You will need to have [vader](https://github.com/junegunn/vader.vim) installed. Then you will be able to run `:Vader .vader` and hopefully see the following output:
 
 ![Tests Image](https://github.com/chris-bacon/haskell-refactor/raw/master/vader-tests.png "Vader Tests")
+
+Unfortunately, the tests are sensitive to whitespace so you will have to be vigilent with regards to whitespace.
+
