@@ -12,16 +12,17 @@ function! CreateType(name)
     return "type\<space>" . a:name . g:equals
 endfunction
 
+function! GetInput(msg)
+    call inputsave()
+    let i = input(a:msg)
+    call inputrestore()
+    return i
+endfunction
+
 function! ExtractHaskellType(...)
     let requiresPrompt = a:0 < 1
 
-    if requiresPrompt
-        call inputsave()
-        let tName = input('Name type: ')
-        call inputrestore()
-    else 
-        let tName = a:1
-    endif
+    let tName = requiresPrompt ? GetInput('Name type: ') : a:1
 
     let cmd = "normal! gvdmm" 
     let cmd .= FindPreviousEmptyLine() 
@@ -46,20 +47,15 @@ function! CreateTypeSignature(name, numArgs)
 endfunction
 
 function! CreateFunction(name, params)
-    return a:name . " " . a:params . g:equals
+    return a:name . (a:params != "" ? " " . a:params : "") . g:equals
 endfunction
 
 function! ExtractHaskellFunction(...)
     let requiresPrompt = a:0 < 1
 
     if requiresPrompt
-        call inputsave()
-        let fName = input('Rename function to: ')
-        call inputrestore()
-
-        call inputsave()
-        let providedArgs = input('Give arguments (seperated by space):  ')
-        call inputrestore()
+        let fName        = GetInput('Rename function to: ')
+        let providedArgs = GetInput('Give arguments (seperated by space):  ')
 
         let args       = split(providedArgs, " ")
         let numArgs    = len(args)
@@ -79,7 +75,7 @@ function! ExtractHaskellFunction(...)
     let cmd .= CreateTypeSignature(fName, numFParams) 
     let cmd .= "\<esc>o" 
     let cmd .= CreateFunction(fName, fParams) 
-    let cmd .= "\<esc>po\<esc>`mi" 
+    let cmd .= "\<esc>p\<esc>`mi"
     let cmd .= fName . (fParams != "" ? " " . fParams : "") 
     let cmd .= "\<esc>:noh"
 
@@ -88,3 +84,4 @@ endfunction
 
 command! -range -nargs=? ExtractHaskellType     call ExtractHaskellType(<f-args>)
 command! -range -nargs=? ExtractHaskellFunction call ExtractHaskellFunction(<f-args>)
+
