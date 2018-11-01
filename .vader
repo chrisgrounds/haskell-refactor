@@ -28,3 +28,24 @@ Expect haskell (ExtractHaskellType extracts a function correctly):
   type IntMaybeInt = Int -> Maybe Int
 
   f :: IntMaybeInt -> Int
+
+Given haskell (Setup with multiline function example):
+  f = do
+    contents <- readFile "test"
+    print contents
+
+Do (Highlight text and run ExtractHaskellFuncton):
+  2jo\<esc>3k
+  02w
+  v2jwe
+  :ExtractHaskellFunction g\<Enter>
+
+Expect haskell (ExtractHaskellFunction extracts a multiline function correctly):
+  f = g
+
+  g :: _
+  g = do
+    contents <- readFile "test"
+    print contents
+  
+
