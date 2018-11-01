@@ -12,7 +12,6 @@ Expect haskell (ExtractHaskellFunction extracts a function correctly):
 
   g :: _ -> _
   g n = n > 3
-  
 
 Given haskell (Setup with type example):
   f :: Int -> Maybe Int -> Int
@@ -47,5 +46,4 @@ Expect haskell (ExtractHaskellFunction extracts a multiline function correctly):
   g = do
     contents <- readFile "test"
     print contents
-  
 
